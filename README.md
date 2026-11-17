@@ -53,14 +53,6 @@ docker run -d --name fc-eddn --restart unless-stopped \
 
 In Kubernetes kann dasselbe Image als Deployment mit einer Replik, Strategie `Recreate`, UID/GID `65532` und beschreibbarem PersistentVolumeClaim unter `/state` laufen. Dazu gegebenenfalls `fsGroup: 65532` setzen und ein `imagePullSecret` für ein privates GHCR-Paket angeben.
 
-## GitHub Actions und Renovate
-
-Pushes auf `main` und Pull Requests führen Tests und Builds aus. Die Binary-Artefakte decken Linux, Windows und macOS auf amd64 und arm64 sowie Linux ARMv7 ab. Auf `main` wird zusätzlich das Linux-Image für amd64 und arm64 unter einem SHA-Tag in GitHub Container Registry veröffentlicht.
-
-Montags um 06:23 Uhr (Europe/Berlin) prüft der Workflow den Stand seit dem letzten stabilen Release. Bei Änderungen veröffentlicht er die nächste Patchversion als GitHub Release mit Binaries und SHA256-Prüfsummen sowie das gleichnamige GHCR-Tag. Das erste Release ist `v0.1.0`. Über **Actions → CI and weekly release → Run workflow** kann dieselbe Prüfung manuell ausgeführt werden.
-
-Aktiviere die [Renovate GitHub App](https://github.com/apps/renovate) für das Repository oder füge es einer bestehenden Renovate-Instanz hinzu. Die Konfiguration öffnet Update-PRs für Go, Docker-Basisimages und GitHub Actions. Für Minor-, Patch-, Pin- und Digest-Updates ist Automerge konfiguriert. Richte den Job `test` als erforderlichen Statuscheck für `main` ein, damit Renovate vor dem Merge auf dessen grünes Ergebnis wartet. Major-Updates bleiben zur Durchsicht offen.
-
 ## Schnittstellen
 
 - [Frontier Companion API (EDCD)](https://github.com/EDCD/FDevIDs/tree/master/Frontier%20API)
