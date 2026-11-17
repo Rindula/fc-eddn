@@ -1,0 +1,6 @@
+/.fc-eddn/
+/dist/
+/fc-eddn
+/fc-eddn.exe
+.env
+*.env

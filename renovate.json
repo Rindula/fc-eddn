@@ -1,0 +1,14 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", "helpers:pinGitHubActionDigests", "docker:pinDigests", ":maintainLockFilesWeekly"],
+  "timezone": "Europe/Berlin",
+  "packageRules": [
+    {
+      "matchManagers": ["gomod", "dockerfile", "github-actions"],
+      "matchUpdateTypes": ["minor", "patch", "digest", "pin", "pinDigest"],
+      "automerge": true,
+      "automergeType": "pr",
+      "platformAutomerge": false
+    }
+  ]
+}

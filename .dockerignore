@@ -1,0 +1,7 @@
+.git
+.fc-eddn
+.env
+*.env
+dist
+fc-eddn
+fc-eddn.exe
